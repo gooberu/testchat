@@ -163,16 +163,17 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
 //                  onPressed: _handlePhotoButtonPressed,
 //                ),
               ),
-              // TODO: Add TextField
-//              new Flexible(
-//                child: new TextField(
-//                  controller: _textController,
-//                  onSubmitted: _handleSubmitted,
-//                  onChanged: _handleMessageChanged,
-//                  decoration:
-//                      new InputDecoration.collapsed(hintText: 'Send a message'),
-//                ),
-//              ),
+              // Begin: Add TextField
+              new Flexible(
+                child: new TextField(
+                  controller: _textController,
+                  onSubmitted: _handleSubmitted,
+                  onChanged: _handleMessageChanged,
+                  decoration:
+                      new InputDecoration.collapsed(hintText: 'Send a message'),
+                ),
+              ),
+              // END: Add TextField
               new Container(
                   margin: new EdgeInsets.symmetric(horizontal: 4.0),
                   child: new PlatformAdaptiveButton(

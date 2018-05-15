@@ -95,6 +95,42 @@ Steps
     
    #. Verify checkpoint testchat-checkpoint-02_
 
+#. Add the testchat textfield to accept user input
+
+    #. Code added to line 166 lib/main.dart ::
+
+              // Begin: Add TextField
+              new Flexible(
+                child: new TextField(
+                  controller: _textController,
+                  onSubmitted: _handleSubmitted,
+                  onChanged: _handleMessageChanged,
+                  decoration:
+                      new InputDecoration.collapsed(hintText: 'Send a message'),
+                ),
+              ),
+              // END: Add TextField
+
+    #. Fix any errors and verify application deploys and runs ::
+
+        macci:testchat cat$ flutter run
+
+#. Produce testchat-checkpoint-03_ Add Text input to testchat
+
+   #. Command line ::
+
+        macci:testchat cat$ cd ~/bast23/testchat
+        macci:testchat cat$ git add *
+        macci:testchat cat$ git commit -m "commit for testchat-checkpoint-03"
+        macci:testchat cat$ git tag testchat-checkpoint-03
+        macci:testchat cat$ git push
+        macci:testchat cat$ git push origin testchat-checkpoint-03
+    
+   #. Verify checkpoint testchat-checkpoint-03_
+
+
+
+
 Resources
 ---------
 
@@ -111,6 +147,7 @@ Resources
 .. _gooberu-testchat-github: https://github.com/gooberu/testchat
 .. _testchat-checkpoint-01: https://github.com/gooberu/testchat/tree/testchat-checkpoint-01
 .. _testchat-checkpoint-02: https://github.com/gooberu/testchat/tree/testchat-checkpoint-02
+.. _testchat-checkpoint-03: https://github.com/gooberu/testchat/tree/testchat-checkpoint-03
 
 .. _youtube-flutter-chat-tutorial: https://youtu.be/w2TcYP8qiRI?list=PLlpxjI4sVd-zZ1jpJHJMSHGiWInsvwwf_
 .. _youtube-flutter-chat-github: https://github.com/efortuna/memechat
