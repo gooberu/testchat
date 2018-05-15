@@ -17,13 +17,16 @@ Steps
 
 #. Pull in docs structure
 
-   #. cd ~/bast23/testchat
-   #. cp -r ~/temp/flutter/docs .
-   #. vi docs/conf.py
-   #. vi docs/index.rst (and various others)
-   #. cd docs
-   #. make html (fix errors)
-   #. open build/html/index.html
+   #. Command line ::
+
+        macci:testchat cat$ cd ~/bast23/testchat
+        macci:testchat cat$ cp -r ~/temp/flutter/docs .
+        macci:testchat cat$ vi docs/conf.py
+        macci:testchat cat$ vi docs/index.rst (and various others)
+        macci:testchat cat$ cd docs
+        macci:docs cat$ make html (fix errors)
+        macci:docs cat$ open build/html/index.html
+
    #. verify docs
 
 #. Create gooberu-testchat-readthedocs_
@@ -36,27 +39,80 @@ Steps
 
 #. Run testchat flutter application baseline
 
-   #. cd ~/bast23/testchat
-   #. flutter packages get
-   #. flutter run
+
+   #. Command line ::
+
+        macci:testchat cat$ cd ~/bast23/testchat
+        macci:testchat cat$ flutter packages get
+        macci:testchat cat$ flutter run
+
    #. Verify baseline application deploys and runs
 
-#. testchat-checkpoint-01_
+#. Produce testchat-checkpoint-01_
 
-   #. cd ~/bast23/testchat/docs
-   #. vi source/testchat-dev-detail.rst (update doc)
-   #. make html 
-   #. open build/html/index.html (verify docs)
-   #. git add *
-   #. git commit -m "commit for testchat-checkpoint-01"
-   #. git tag testchat-checkpoint-01
+   #. Command line ::
 
-#. tbd
+        macci:testchat cat$ cd ~/bast23/testchat/docs
+        macci:docs cat$ vi source/testchat-dev-detail.rst (update doc)
+        macci:docs cat$ make html 
+        macci:docs cat$ open build/html/index.html (verify docs)
+        macci:testchat cat$ cd ~/bast23/testchat
+        macci:testchat cat$ git add *
+        macci:testchat cat$ git commit -m "commit for testchat-checkpoint-01"
+        macci:testchat cat$ git tag testchat-checkpoint-01
+        macci:testchat cat$ git push
+        macci:testchat cat$ git push origin testchat-checkpoint-01
+    
+   #. Verify checkpoint testchat-checkpoint-01_ Baseline
+
+#. Use the skeleton from youtube-flutter-chat-tutorial_ source youtube-flutter-chat-github_
+
+   #. Command line ::
+
+        macci:testchat cat$ mv lib/main.dart lib/main.dart.flutterbaseline
+        macci:testchat cat$ mv main.dart.txt lib/main.dart
+        macci:testchat cat$ mv platform_adaptive.dart.txt lib/platform_adaptive.dart
+        macci:testchat cat$ mv type_meme.dart.txt lib/type_meme.dart
+
+   #. Fix errors and verify application deploys and runs ::
+
+        macci:testchat cat$ flutter run
+
+#. Produce testchat-checkpoint-02_ Basic Chat Screen
+
+   #. Command line ::
+
+        macci:testchat cat$ cd ~/bast23/testchat/docs
+        macci:docs cat$ vi source/testchat-dev-detail.rst (update doc)
+        macci:docs cat$ make html 
+        macci:docs cat$ open build/html/index.html (verify docs)
+        macci:testchat cat$ cd ~/bast23/testchat
+        macci:testchat cat$ git add *
+        macci:testchat cat$ git commit -m "commit for testchat-checkpoint-02"
+        macci:testchat cat$ git tag testchat-checkpoint-02
+        macci:testchat cat$ git push
+        macci:testchat cat$ git push origin testchat-checkpoint-02
+    
+   #. Verify checkpoint testchat-checkpoint-02_
 
 Resources
 ---------
 
+#. Github Project Repo: gooberu-testchat-github_
+#. Read the Docs: gooberu-testchat-readthedocs_
+#. Tutorial via GoogleIO-17 "Single Codebase, Two Apps with Flutter and Firebase" see youtube-flutter-chat-tutorial_
+#. Github source for tutorial youtube-flutter-chat-github_ 
+#. Firebase console for firebase-chat2cld_ project database
+#. Github source for memechat-skeleton_
+
+
 .. _readthedocs: https://readthedocs.org/
 .. _gooberu-testchat-readthedocs: https://gooberu-testchat.readthedocs-hosted.com/en/latest/index.html
 .. _gooberu-testchat-github: https://github.com/gooberu/testchat
-.. _testchat-checkpoint-01: https://github.com/gooberu/testchat
+.. _testchat-checkpoint-01: https://github.com/gooberu/testchat/tree/testchat-checkpoint-01
+.. _testchat-checkpoint-02: https://github.com/gooberu/testchat/tree/testchat-checkpoint-02
+
+.. _youtube-flutter-chat-tutorial: https://youtu.be/w2TcYP8qiRI?list=PLlpxjI4sVd-zZ1jpJHJMSHGiWInsvwwf_
+.. _youtube-flutter-chat-github: https://github.com/efortuna/memechat
+.. _firebase-chat2cld: https://console.firebase.google.com/project/chat2cld/overview
+.. _memechat-skeleton: https://github.com/efortuna/memechat/blob/skeleton/lib/main.dart
