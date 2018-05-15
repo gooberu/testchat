@@ -4,7 +4,7 @@ testchat quickstart
 Steps
 -----
 
-#. resource1_ Demo the Secret Sauce
+#. Get project repo gooberu-testchat_ 
 
 #. tbd
 
@@ -14,5 +14,5 @@ Steps
 Resources
 ---------
 
-.. _resource1: https://gooberu.bast23.me/
+.. _gooberu-testchat: https://github.com/gooberu/testchat
 
