@@ -16,7 +16,7 @@ import 'package:flutter/foundation.dart';
 import 'type_meme.dart';
 import 'platform_adaptive.dart';
 
-const _name = 'Emily';
+const _name = 'Student';
 
 void main() {
   runApp(new MyApp());
@@ -27,10 +27,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'GooberU testchat',
-      // TODO: Add platform adaptive theme
-//      theme: defaultTargetPlatform == TargetPlatform.iOS
-//          ? kIOSTheme
-//          : kDefaultTheme,
+      // Begin: Add platform adaptive theme
+      theme: defaultTargetPlatform == TargetPlatform.iOS
+          ? kIOSTheme
+          : kDefaultTheme, //End: Add platform adaptive theme
 //      home: new Container(color: Colors.black),
       // TODO: Add ChatScreen
       home: new ChatScreen(),
@@ -81,20 +81,12 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
     });
   }
 
+  // Begin: Add _handleSubmitted function
   void _handleSubmitted(String text) {
-    // TODO: Fill out this function
-//    _textController.clear();
-//    PRE-PLUGINS
-//    _addMessage(name: _name, text: text);
-//    POST-PLUGINS
-//    _googleSignIn.signIn().then((user) {
-//      var message = {
-//        'sender': {'name': user.displayName, 'imageUrl': user.photoUrl},
-//        'text': text,
-//      };
-//      _messagesReference.push().set(message);
-//    });
+    _textController.clear();
+    _addMessage(name: _name, text: text);
   }
+  // END: Add _handleSubmitted function
 
   void _addMessage(
       {String name,
@@ -102,12 +94,12 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
       String imageUrl,
       String textOverlay,
       String senderImageUrl}) {
-    var animationController;
-    // TODO: initialize animationController
-//    var animationController = new AnimationController(
-//      duration: new Duration(milliseconds: 700),
-//      vsync: this,
-//    );
+//    var animationController;
+    // Begin: initialize animationController
+    var animationController = new AnimationController(
+      duration: new Duration(milliseconds: 700),
+      vsync: this,
+    ); // End: initialize animationController
     var sender = new ChatUser(name: name, imageUrl: senderImageUrl);
     var message = new ChatMessage(
         sender: sender,
@@ -115,10 +107,10 @@ class ChatScreenState extends State<ChatScreen> with TickerProviderStateMixin {
         imageUrl: imageUrl,
         textOverlay: textOverlay,
         animationController: animationController);
-    // TODO: Insert message
-//    setState(() {
-//      _messages.insert(0, message);
-//    });
+    // Begin: Insert message
+    setState(() {
+      _messages.insert(0, message);
+    }); //End: Insert message
     if (imageUrl != null) {
       NetworkImage image = new NetworkImage(imageUrl);
       image
@@ -235,13 +227,13 @@ class ChatMessageListItem extends StatelessWidget {
   final ChatMessage message;
 
   Widget build(BuildContext context) {
-    return new Container(
-      // TODO: Add SizeTransition
-//    return new SizeTransition(
-//        sizeFactor: new CurvedAnimation(
-//            parent: message.animationController, curve: Curves.easeOut),
-//        axisAlignment: 0.0,
-//        child: new Container(
+//    return new Container(
+      // Begin: Add SizeTransition
+    return new SizeTransition(
+        sizeFactor: new CurvedAnimation(
+            parent: message.animationController, curve: Curves.easeOut),
+        axisAlignment: 0.0,
+        child: new Container( // End: Add SizeTransition
       margin: const EdgeInsets.symmetric(vertical: 10.0),
       child: new Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -264,7 +256,7 @@ class ChatMessageListItem extends StatelessWidget {
           ),
         ],
       ),
-//        )
+        ) // EndClose: Add SizeTransition
     );
   }
 }

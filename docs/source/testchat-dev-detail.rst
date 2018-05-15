@@ -128,7 +128,93 @@ Steps
     
    #. Verify checkpoint testchat-checkpoint-03_
 
+#. Add the user input _handleSubmitted function
 
+    #. Code added to line 84 lib/main.dart ::
+
+              // Begin: Add _handleSubmitted function
+                void _handleSubmitted(String text) {
+                    _textController.clear();
+                    _addMessage(name: _name, text: text);
+                }
+              // END: Add _handleSubmitted function
+
+    #. Fix any errors and verify application deploys and runs ::
+
+        macci:testchat cat$ flutter run
+
+    #. NOTE: While the text input is now hanled by _handleSubmitted it is not displayed
+
+#. Display text on text input _handleSubmitted
+
+    #. Code uncommented to update message display state line 110 lib/main.dart ::
+
+        // Begin: Insert message
+        setState(() {
+          _messages.insert(0, message);
+        }); //End: Insert message
+
+    #. Fix any errors and verify application deploys and runs ::
+
+        macci:testchat cat$ flutter run
+
+#. Add Theme
+
+    #. Code uncommented to update message display state line 110 lib/main.dart ::
+
+        // Begin: Insert message
+        setState(() {
+          _messages.insert(0, message);
+        }); //End: Insert message
+
+    #. Fix any errors and verify application deploys and runs ::
+
+        macci:testchat cat$ flutter run
+
+#. Add Aniamation and call from build widget
+
+    #. Code uncommented animationController line 99 lib/main.dart ::
+
+        //    var animationController;
+        // Begin: initialize animationController
+        var animationController = new AnimationController(
+        duration: new Duration(milliseconds: 700),
+        vsync: this,
+        ); // End: initialize animationController
+
+    #. Code uncommented animationController line 229 lib/main.dart ::
+
+        Widget build(BuildContext context) {
+        //    return new Container(
+            // Begin: Add SizeTransition
+            return new SizeTransition(
+                sizeFactor: new CurvedAnimation(
+                    parent: message.animationController, curve: Curves.easeOut),
+                axisAlignment: 0.0,
+                child: new Container( // End: Add SizeTransition
+        ...
+                    ),
+                ) // EndClose: Add SizeTransition
+            );
+        }
+        }
+
+    #. Fix any errors and verify application deploys and runs ::
+
+        macci:testchat cat$ flutter run
+
+#. Produce testchat-checkpoint-04_ Added Theme and Aniamation Look and Feel stuff
+
+   #. Command line ::
+
+        macci:testchat cat$ cd ~/bast23/testchat
+        macci:testchat cat$ git add *
+        macci:testchat cat$ git commit -m "commit for testchat-checkpoint-04"
+        macci:testchat cat$ git tag testchat-checkpoint-04
+        macci:testchat cat$ git push
+        macci:testchat cat$ git push origin testchat-checkpoint-04
+    
+   #. Verify checkpoint testchat-checkpoint-04_
 
 
 Resources
@@ -148,6 +234,7 @@ Resources
 .. _testchat-checkpoint-01: https://github.com/gooberu/testchat/tree/testchat-checkpoint-01
 .. _testchat-checkpoint-02: https://github.com/gooberu/testchat/tree/testchat-checkpoint-02
 .. _testchat-checkpoint-03: https://github.com/gooberu/testchat/tree/testchat-checkpoint-03
+.. _testchat-checkpoint-04: https://github.com/gooberu/testchat/tree/testchat-checkpoint-04
 
 .. _youtube-flutter-chat-tutorial: https://youtu.be/w2TcYP8qiRI?list=PLlpxjI4sVd-zZ1jpJHJMSHGiWInsvwwf_
 .. _youtube-flutter-chat-github: https://github.com/efortuna/memechat
